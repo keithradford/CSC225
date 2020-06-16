@@ -19,9 +19,22 @@ public class ArrayMatch {
 	 * Preconditions: a and b have the same number of elements
 	 */
 	public static boolean match(int[] a, int[] b) {
-		// TODO complete the implementation
+		if (a[0] != b[0]) {
+			return false;
+		}
+
+		int len = a.length;
+		int[] a_rest = new int[len - 1];
+		int[] b_rest = new int[len - 1];
+		for (int i = 1; i < len; i++) {
+			if(i + 1 == len) {
+				return true;
+			}
+			a_rest[0] = a[i];
+			b_rest[0] = b[i];
+		}
 		
-		return false; // change this - set to false so it compiles
+		return match(a_rest, b_rest);
 	}
 
 	/*
