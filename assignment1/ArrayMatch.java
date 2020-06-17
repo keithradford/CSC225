@@ -8,6 +8,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 import java.util.NoSuchElementException;
+import java.util.Arrays;
 
 public class ArrayMatch {
 
@@ -19,22 +20,35 @@ public class ArrayMatch {
 	 * Preconditions: a and b have the same number of elements
 	 */
 	public static boolean match(int[] a, int[] b) {
-		if (a[0] != b[0]) {
-			return false;
+		int len = a.length;
+		Boolean equal = Arrays.equals(a, b);
+
+		if ((a[0] != b[0]) && len == 1) return false;
+		if(len % 2 != 0) return equal;
+		if(equal) return equal;
+
+		int[] a1 = new int[len/2];
+		int[] a2 = new int[len/2];
+		int[] b1 = new int[len/2];
+		int[] b2 = new int[len/2];
+		int k = 0;
+		for (int i = 0; i < len; i++) {
+			if(i < (int) len / 2) {
+				a1[i] = a[i];
+				b1[i] = b[i];
+			}
+			else{
+				a2[k] = a[i];
+				b2[k] = b[i];
+				k++;
+			}
 		}
 
-		int len = a.length;
-		int[] a_rest = new int[len - 1];
-		int[] b_rest = new int[len - 1];
-		for (int i = 1; i < len; i++) {
-			if(i + 1 == len) {
-				return true;
-			}
-			a_rest[i] = a[i];
-			b_rest[i] = b[i];
-		}
-		
-		return match(a_rest, b_rest);
+		Boolean condition_a = match(a1, b1) && match(a2, b2);
+		Boolean condition_b = match(a1, b1) && match(a1, b2);
+		Boolean condition_c = match(a2, b1) && match(a2, b2);
+
+		return condition_a || condition_b || condition_c;
 	}
 
 	/*
