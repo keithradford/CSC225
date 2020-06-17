@@ -30,8 +30,8 @@ public class ArrayMatch {
 			if(i + 1 == len) {
 				return true;
 			}
-			a_rest[0] = a[i];
-			b_rest[0] = b[i];
+			a_rest[i] = a[i];
+			b_rest[i] = b[i];
 		}
 		
 		return match(a_rest, b_rest);
