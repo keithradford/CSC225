@@ -97,7 +97,7 @@ public class A4Tester {
 		
 		expected = "{bst,computer,csc,heap,test,word}";
 		returned = bst.inOrder();
-		System.out.println(returned);
+		// System.out.println(returned);
 		displayResults(returned.equals(expected), "bst test1");
 		
 		expected = "{heap,computer,bst,csc,test,word}";
@@ -106,7 +106,7 @@ public class A4Tester {
 		
 		expectedFreq = 1;
 		returnedFreq = bst.getFrequency("test");
-		System.out.println(returnedFreq);
+		// System.out.println(returnedFreq);
 		displayResults(returnedFreq==expectedFreq, "bst test3");
 		
 		expectedFreq = 0;
@@ -120,6 +120,7 @@ public class A4Tester {
 		
 		expectedFreq = 4;
 		returnedFreq = bst.getFrequency("bst");
+		System.out.println("Returned: " + returnedFreq);
 		displayResults(returnedFreq==expectedFreq, "bst test5");
 		
 		expectedFreq = 2;

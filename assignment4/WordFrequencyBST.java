@@ -25,21 +25,18 @@ public class WordFrequencyBST {
 		// Check if in tree
 		if(this.numElements > 0){
 			TreeNode curr = this.root;
-			while((curr.left != null) && (curr.right != null)){
+			while(curr != null){
 				TreeNode left = curr.left;
 				TreeNode right = curr.right;
 				if(curr.compareTo(word) == 0){
 					curr.addToFrequency();
 					return;
 				}
-				else if(left.compareTo(word) > 0){
+				else if(curr.compareTo(word) > 0){
 					curr = left;
 				}
-				else if(right.compareTo(word) < 0){
+				else if(curr.compareTo(word) < 0){
 					curr = right;
-				}
-				else{
-					break;
 				}
 			}
 		}
@@ -54,6 +51,11 @@ public class WordFrequencyBST {
 		this.numElements++;
 	}
 
+	/*
+	 * Purpose: Recursively insert a new entry to the BST. 
+	 * Parameters: TreeNode root - the root node of the BST,
+	 * Entry entry - the new entry to insert
+	 */	
 	public TreeNode insert(TreeNode root, Entry entry){
 		if(root == null) 
 			return new TreeNode(entry);
@@ -77,6 +79,11 @@ public class WordFrequencyBST {
 		return 0;
 	}
 
+	/*
+	 * Purpose: Recursively search the BST for an Entry with the given word. 
+	 * Parameters: TreeNode root - the root node of the BST,
+	 * String word - the word to find
+	 */	
 	public TreeNode search(TreeNode root, String word){
 		if(root == null || root.compareTo(word) == 0)
 			return root;
