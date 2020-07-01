@@ -11,7 +11,7 @@ public class A4Tester {
 		testHeapOperations();
 		
 		//Uncomment the following line once you have completed Part 1
-		// testBSTOperations();	
+		testBSTOperations();	
 		
 		System.out.println("\nPASSED " + testPassCount + "/" + testCount + " TESTS");
 		
@@ -97,6 +97,7 @@ public class A4Tester {
 		
 		expected = "{bst,computer,csc,heap,test,word}";
 		returned = bst.inOrder();
+		System.out.println(returned);
 		displayResults(returned.equals(expected), "bst test1");
 		
 		expected = "{heap,computer,bst,csc,test,word}";
@@ -105,6 +106,7 @@ public class A4Tester {
 		
 		expectedFreq = 1;
 		returnedFreq = bst.getFrequency("test");
+		System.out.println(returnedFreq);
 		displayResults(returnedFreq==expectedFreq, "bst test3");
 		
 		expectedFreq = 0;

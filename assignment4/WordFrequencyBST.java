@@ -1,5 +1,5 @@
-// Name: 
-// Student number: V00
+// Name: Keith Radford
+// Student number: V00918086
 
 public class WordFrequencyBST {
 	private TreeNode root;
@@ -22,9 +22,47 @@ public class WordFrequencyBST {
 	 *   value incremented. 
 	 */	
 	public void handleWord(String word) {
-		// TODO: Complete this method
+		// Check if in tree
+		if(this.numElements > 0){
+			TreeNode curr = this.root;
+			while((curr.left != null) && (curr.right != null)){
+				TreeNode left = curr.left;
+				TreeNode right = curr.right;
+				if(curr.compareTo(word) == 0){
+					curr.addToFrequency();
+					return;
+				}
+				else if(left.compareTo(word) > 0){
+					curr = left;
+				}
+				else if(right.compareTo(word) < 0){
+					curr = right;
+				}
+				else{
+					break;
+				}
+			}
+		}
+		// Else insert
+		Entry entry = new Entry(word);
+		if(this.numElements == 0){
+			this.root = new TreeNode(entry);
+		}
+		else {
+			insert(this.root, entry);
+		}
+		this.numElements++;
 	}
 
+	public TreeNode insert(TreeNode root, Entry entry){
+		if(root == null) 
+			return new TreeNode(entry);
+		else if(root.compareTo(entry.getWord()) > 0)
+			root.left = insert(root.left, entry);
+		else
+			root.right = insert(root.right, entry);
+		return root;
+	}
 	
 	/*
 	 * Purpose: Get the frequency value of the given word
@@ -32,8 +70,19 @@ public class WordFrequencyBST {
 	 * Returns: int - the word's associated frequency
 	 */	
 	public int getFrequency(String word) {
-		// TODO: Complete this method
-		return 0; // so it compiles
+		TreeNode to_find = search(this.root, word);
+		if(to_find != null){
+			return to_find.getData().getFrequency();
+		}
+		return 0;
+	}
+
+	public TreeNode search(TreeNode root, String word){
+		if(root == null || root.compareTo(word) == 0)
+			return root;
+		else if(root.compareTo(word) > 0)
+			return search(root.left, word);
+		return search(root.right, word);
 	}
 
 	/****************************************************
