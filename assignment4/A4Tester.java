@@ -16,11 +16,10 @@ public class A4Tester {
 		System.out.println("\nPASSED " + testPassCount + "/" + testCount + " TESTS");
 		
 		//Uncomment the following once you have completed Parts 1 and 2
-		/*
 		System.out.println();
 		System.out.println("Analysis results:");
 		testFrequencyReport(args);
-		*/
+		
 	}
 	
 	public static void testHeapOperations() {
@@ -106,7 +105,6 @@ public class A4Tester {
 		
 		expectedFreq = 1;
 		returnedFreq = bst.getFrequency("test");
-		// System.out.println(returnedFreq);
 		displayResults(returnedFreq==expectedFreq, "bst test3");
 		
 		expectedFreq = 0;
@@ -120,13 +118,11 @@ public class A4Tester {
 		
 		expectedFreq = 4;
 		returnedFreq = bst.getFrequency("bst");
-		System.out.println("Returned: " + returnedFreq);
 		displayResults(returnedFreq==expectedFreq, "bst test5");
 		
 		expectedFreq = 2;
 		returnedFreq = bst.getFrequency("csc");
 		displayResults(returnedFreq==expectedFreq, "bst test6");
-		
 	}
 	
 	public static void testFrequencyReport(String[] args) {

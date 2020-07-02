@@ -1,5 +1,5 @@
-// Name: 
-// Student number: V00
+// Name: Keith Radford
+// Student number: V00918086
 
 public class WordFrequencyReport {
 	private static final int CAPACITY = 5;
@@ -12,8 +12,13 @@ public class WordFrequencyReport {
 	 */
 	public static Entry[] overallMostFrequent(MaxFrequencyHeap h) {
 		Entry[] top5 = new Entry[CAPACITY];
-		
-		// TODO: populate array
+		Entry curr = h.removeMax();
+		int i = 0;
+		while(i < CAPACITY && curr != null){
+			top5[i] = curr;
+			i++;
+			curr = h.removeMax();
+		}
 		
 		return top5;
 	}
@@ -28,8 +33,15 @@ public class WordFrequencyReport {
 	 */
 	public static Entry[] atLeastLength(MaxFrequencyHeap h, int n) {
 		Entry[] top5 = new Entry[CAPACITY];
-		
-		// TODO: populate array
+		Entry curr = h.removeMax();
+		int i = 0;
+		while(i < CAPACITY && curr != null){
+			if(curr.getWord().length() >= n){
+				top5[i] = curr;
+				i++;
+			}
+			curr = h.removeMax();
+		}
 
 		return top5;
 	}
@@ -44,8 +56,15 @@ public class WordFrequencyReport {
 	 */
 	public static Entry[] startsWith(MaxFrequencyHeap h, char letter) {
 		Entry[] top5 = new Entry[CAPACITY];	
-		
-		// TODO: populate array
+		Entry curr = h.removeMax();
+		int i = 0;
+		while(i < CAPACITY && curr != null){
+			if(curr.getWord().charAt(0) == letter){
+				top5[i] = curr;
+				i++;
+			}
+			curr = h.removeMax();
+		}
 		
 		return top5;
 	}

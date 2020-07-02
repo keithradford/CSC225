@@ -63,6 +63,7 @@ public class WordFrequencyBST {
 			root.left = insert(root.left, entry);
 		else
 			root.right = insert(root.right, entry);
+
 		return root;
 	}
 	
@@ -76,6 +77,7 @@ public class WordFrequencyBST {
 		if(to_find != null){
 			return to_find.getData().getFrequency();
 		}
+
 		return 0;
 	}
 
@@ -89,6 +91,7 @@ public class WordFrequencyBST {
 			return root;
 		else if(root.compareTo(word) > 0)
 			return search(root.left, word);
+		
 		return search(root.right, word);
 	}
 

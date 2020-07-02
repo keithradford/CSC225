@@ -18,18 +18,22 @@ public class MaxFrequencyHeap implements PriorityQueue {
 	}
 	
 	public void insert(Entry element) {
-		int index = this.size;
+		// System.out.println("Inserting " + element);
+		int curr = this.size;
+		int parent = 0;
 		this.size++;
-		this.data[index] = element;
-		if(index > 0){
+		this.data[curr] = element;
+		if(curr > 0){
 			// Bubble up
-			for(int i = index; i > 0; i /= 2){
-				if(this.data[i / 2].getFrequency() < this.data[i].getFrequency()){
-					Entry tmp = this.data[i / 2];
-					this.data[i / 2] = this.data[i];
-					this.data[i] = tmp;
+			while(true){
+				parent = (curr - 1) / 2;
+				if(this.data[parent].getFrequency() < this.data[curr].getFrequency()){
+					Entry tmp = this.data[parent];
+					this.data[parent] = this.data[curr];
+					this.data[curr] = tmp;
+					curr = parent;
 				}
-				else break;
+				else return;
 			}	
 		}
 	}
@@ -46,7 +50,6 @@ public class MaxFrequencyHeap implements PriorityQueue {
 				while((2 * i) + 1 < size){
 					int right = (2 * i) + 2;
 					int left = (2 * i) + 1;
-					System.out.println("Right" + right + "Left" + left);
 					if(this.data[right].getFrequency() > this.data[left].getFrequency()){
 						Entry tmp = this.data[right];
 						this.data[right] = this.data[i];
@@ -73,7 +76,7 @@ public class MaxFrequencyHeap implements PriorityQueue {
 	}
 	
 	public int size() {
-		return size;
+		return this.size;
 	}
 
 }
