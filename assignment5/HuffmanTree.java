@@ -35,7 +35,23 @@ public class HuffmanTree {
 	}
 	
 	public String decodeRecursive(HNode cur, BitQueue input) throws DecodeException {
-		// TODO: implement this
-		return "unknown"; // so it compiles
+		//If leaf node
+		if(cur.left == null && cur.right == null){
+			//If more to decode
+			if(!input.isEmpty())
+				return cur.letter + decodeRecursive(this.root, input);
+			return cur.letter;
+		}
+
+		//Else if need to continue traversing to leaf node
+		String next_bit = input.dequeue();
+		if(next_bit.equals("0")){
+			return decodeRecursive(cur.left, input);
+		}
+		else if(next_bit.equals("1")){
+			return decodeRecursive(cur.right, input);
+		}
+
+		return "unknown"; //so it compiles
 	}
 }
