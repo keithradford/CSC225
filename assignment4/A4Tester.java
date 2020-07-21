@@ -148,7 +148,7 @@ public class A4Tester {
 		
 		if (h != null) {
 			Entry[] results;
-			int minLength = 6;
+			int minLength = 1;
 			System.out.println("\nMost frequent words with "+minLength+" or more characters:");
 			results = WordFrequencyReport.atLeastLength(h, minLength);
 			printArray(results);
@@ -160,7 +160,7 @@ public class A4Tester {
 		
 		if (h != null) {
 			Entry[] results;
-			char letter = 'c';
+			char letter = 't';
 			System.out.println("\nMost frequent words starting with a "+letter);
 			results = WordFrequencyReport.startsWith(h, letter);
 			printArray(results);
