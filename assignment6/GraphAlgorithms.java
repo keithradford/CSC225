@@ -80,7 +80,7 @@ public class GraphAlgorithms{
 				}
 				if(new_vertex){
 					visited.add(neighbours.get(i));
-					writer.setPixel(v.getX(), v.getY(), fillColour);
+					writer.setPixel(neighbours.get(i).getX(), neighbours.get(i).getY(), fillColour);
 					queue.add(neighbours.get(i));
 				}
 			}
